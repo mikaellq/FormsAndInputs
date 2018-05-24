@@ -27,5 +27,20 @@ namespace FormsAndInputs.Controllers
 
             return View();
         }
+
+        public ActionResult GuessingGame()
+        {
+            TempData["Test"] = "Mikael Rules!";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GuessingGame(string guessNumber)
+        {
+            ViewBag.message = TempData["Test"];
+            //ViewBag.Result = Numbers.GuessNumber(guessNumber);
+
+            return View();
+        }
     }
 }

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "GuessingGame";
+}
+
+<h2>GuessingGame</h2>
+
+@using (Html.BeginForm("GuessingGame", "Home", FormMethod.Post))
+{
+    @Html.TextBox("guessNumber", null, new { @class = "form-control" })
+}
+
+@if (ViewBag.message != null)
+{
+    @ViewBag.message;
+}
