@@ -12,16 +12,16 @@ namespace FormsAndInputs.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return Redirect("/Home/CheckNumber");
+            return Redirect("/CheckTemp/");
         }
         
-        public ActionResult CheckNumber()
+        public ActionResult CheckTemp()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CheckNumber(string input, string unit)
+        public ActionResult CheckTemp(string input, string unit)
         {
             ViewBag.Result = Temperature.FeberTest(input, unit);
 

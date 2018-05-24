@@ -1,11 +1,11 @@
 ﻿
 @{
-    ViewBag.Title = "CheckNumber";
+    ViewBag.Title = "CheckTemp";
 }
 
 <h2>Testa din kroppstemperatur</h2>
 
-@using (Html.BeginForm("CheckNumber", "Home", FormMethod.Post))
+@using (Html.BeginForm("CheckTemp", "Home", FormMethod.Post))
 {
     <div>
         @*<input type="radio" id="celciusId"
@@ -15,6 +15,9 @@
             <input type="radio" id="fahrenheitId"
                    name="unit" value="Fahrenheit">
             <label for="fahrenheitId">Fahrenheit</label>*@
+
+        @*HTML helpers gör så mycket nytta att det blev givet att använda.
+        Som att sätta aktiv radio-knapp automatiskt.*@
 
         Celcius:   @Html.RadioButton("unit", "Celcius", new { Checked = "checked" })
         Fahrenheit: @Html.RadioButton("unit", "Fahrenheit")
