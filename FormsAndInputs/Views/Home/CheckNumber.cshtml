@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "CheckNumber";
+}
+
+<h2>Testa din kroppstemperatur</h2>
+
+@using (Html.BeginForm("CheckNumber", "Home", FormMethod.Post))
+{
+    <div>
+        @*<input type="radio" id="celciusId"
+                   name="unit" value="Celcius">
+            <label for="celciusId">Celcius</label>
+            <br />
+            <input type="radio" id="fahrenheitId"
+                   name="unit" value="Fahrenheit">
+            <label for="fahrenheitId">Fahrenheit</label>*@
+
+        Celcius:   @Html.RadioButton("unit", "Celcius", new { Checked = "checked" })
+        Fahrenheit: @Html.RadioButton("unit", "Fahrenheit")
+    </div>
+
+    <input type="text" name="input" />
+    <input type="submit" class="btn-primary" value="Check" />
+}
+
+@if (ViewBag.Result != null)
+{
+    @ViewBag.Result
+}
