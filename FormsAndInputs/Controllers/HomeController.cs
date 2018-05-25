@@ -14,7 +14,7 @@ namespace FormsAndInputs.Controllers
         {
             return Redirect("/CheckTemp/");
         }
-        
+
         public ActionResult CheckTemp()
         {
             return View();
@@ -35,6 +35,17 @@ namespace FormsAndInputs.Controllers
             Session["Number"] = s;
             Session["Count"] = "0";
 
+            HttpCookie cookie = Request.Cookies.Get("GuessingGame");
+            if (cookie == null)
+            {
+                cookie = new HttpCookie("GuessingGame");
+                cookie.Value = "10";
+                cookie.Expires = DateTime.Now.AddHours(1);
+                Response.Cookies.Add(cookie);
+            }
+
+            ViewBag.hiscore = "High Score: " + cookie.Value;
+
             return View();
         }
 
@@ -42,13 +53,35 @@ namespace FormsAndInputs.Controllers
         public ActionResult GuessingGame(string guessNumber)
         {
             string secret = Session["Number"] as string;
-            int n;
+            int n, hs;
+            string cv = "-1";
 
+            HttpCookie cookie = Request.Cookies.Get("GuessingGame");
+
+            if (cookie != null)
+            {
+                cv = cookie.Value;
+                ViewBag.hiscore = "High Score: " + cv;
+            }
             int r = Numbers.GuessNumber(guessNumber, secret);
-            switch(r)
+            switch (r)
             {
                 case 0:
-                    ViewBag.message = "GRATTIS! Du gissade rätt på "+ Session["Count"]+" försök! Det var "+secret+"! \nSlumpar nu fram ett nytt tal...";
+                    if (cookie != null)
+                    {
+                        n = Int32.Parse(Session["Count"] as string);
+                        hs = Int32.Parse(cookie.Value);
+                        if (n < hs)
+                        {
+                            ViewBag.message = "GRATTIS! Nytt rekord med " + Session["Count"] + " försök! Det var " + secret + "! Slumpar nu fram ett nytt tal...";
+                            cookie.Value = "" + n;
+                            Response.Cookies.Add(cookie);
+                        }
+                        else
+                            ViewBag.message = "GRATTIS! Du gissade rätt på " + Session["Count"] + " försök! Det var " + secret + "! Slumpar nu fram ett nytt tal...";
+                    }
+                    else
+                        ViewBag.message = "GRATTIS! Du gissade rätt på " + Session["Count"] + " försök! Det var " + secret + "! Slumpar nu fram ett nytt tal...";
                     Random random = new Random();
                     string s = "" + random.Next(0, 1000);
                     Session["Number"] = s;
