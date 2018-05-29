@@ -14,6 +14,12 @@ namespace FormsAndInputs
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "ViewModel",
+                url: "ViewModel/{id}",
+                defaults: new { controller = "ViewModel", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "GuessingGame",
                 url: "GuessingGame/{id}",
                 defaults: new { controller = "Home", action = "GuessingGame", id = UrlParameter.Optional }
