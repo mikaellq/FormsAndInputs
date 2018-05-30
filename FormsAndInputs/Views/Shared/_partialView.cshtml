@@ -1,0 +1,62 @@
+﻿<table cellspacing="5px;">
+    <tr>
+        <td>
+            @using (Html.BeginForm("Add", "ViewModel", FormMethod.Post))
+            {
+                @:Name: <input type="text" name="fname" />
+                @:Phonenr: <input type="text" name="fnumber" />
+                @:City: <input type="text" name="fcity" />
+                <input type="submit" name="newpost" value="Add" />
+            }
+        </td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td>
+            @model IEnumerable<FormsAndInputs.Models.Person>
+            @using (Html.BeginForm("Index", "ViewModel", FormMethod.Post))
+            {
+                @:Filter by name: <input type="text" name="filter" />
+                <input type="submit" name="search" value="Search" />
+            }
+        </td>
+    </tr>
+</table>
+<hr />
+<table cellspacing="5px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(Person => Person.Idx)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Person => Person.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Person => Person.Phonenr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(Person => Person.City)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idx)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phonenr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.ActionLink("Delete this!", "Delete", new { id = item.Idx })
+        </td>
+    </tr>
+    }
+</table>

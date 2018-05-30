@@ -127,6 +127,9 @@
     <Content Include="Views\Home\CheckTemp.cshtml" />
     <Content Include="Views\Home\GuessingGame.cshtml" />
     <Content Include="Views\ViewModel\Index.cshtml" />
+    <Content Include="Views\Shared\_partialView.cshtml" />
+    <Content Include="Views\ViewModel\Delete.cshtml" />
+    <Content Include="Views\ViewModel\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
