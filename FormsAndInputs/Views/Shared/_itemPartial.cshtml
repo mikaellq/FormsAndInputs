@@ -1,0 +1,17 @@
+﻿@model FormsAndInputs.Models.Person
+
+<td>
+    @Model.Idx
+</td>
+<td>
+    @Model.Name
+</td>
+<td>
+    @Model.Phonenr
+</td>
+<td>
+    @Model.City
+</td>
+<td>
+    @Html.ActionLink("Delete this!", "Delete", new { id = Model.Idx })
+</td>
