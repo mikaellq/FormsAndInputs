@@ -3,7 +3,7 @@
         <td>
             @using (Html.BeginForm("Add", "ViewModel", FormMethod.Post))
             {
-                @:Name: <input type="text" name="fname"/>
+                @:Name: <input type="text" name="fname" />
                 @:Phonenr: <input type="text" name="fnumber" />
                 @:City: <input type="text" name="fcity" />
                 <input type="submit" name="newpost" value="Add" />
@@ -24,6 +24,23 @@
 </table>
 
 <table cellspacing="5px;" class="table">
+    @using (Html.BeginForm("Sort", "ViewModel", FormMethod.Post))
+    {
+        <tr>
+            <td>
+                <input type="submit" name="name" class="btn-primary" value="by Index" />
+            </td>
+            <td>
+                <input type="submit" name="name" class="btn-primary" value="by Name" />
+            </td>
+            <td>
+                <input type="submit" name="name" class="btn-primary" value="by Phonenr" />
+            </td>
+            <td>
+                <input type="submit" name="name" class="btn-primary" value="by City" />
+            </td>
+        </tr>
+    }
     <tr>
         <th>
             @Html.DisplayNameFor(Person => Person.Idx)
@@ -38,7 +55,7 @@
             @Html.DisplayNameFor(Person => Person.City)
         </th>
     </tr>
-    @foreach(var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             @Html.Partial("_itemPartial", item)

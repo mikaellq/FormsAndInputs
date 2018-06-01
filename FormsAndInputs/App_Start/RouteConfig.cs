@@ -13,23 +13,23 @@ namespace FormsAndInputs
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Add",
-                url: "ViewModel/Add/{id}",
-                defaults: new { controller = "ViewModel", action = "Add", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Add",
+            //    url: "ViewModel/Add/{id}",
+            //    defaults: new { controller = "ViewModel", action = "Add", id = UrlParameter.Optional }
+            //);
 
-            routes.MapRoute(
-                name: "Delete",
-                url: "ViewModel/Delete/{id}",
-                defaults: new { controller = "ViewModel", action = "Delete", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "Delete",
+            //    url: "ViewModel/Delete/{id}",
+            //    defaults: new { controller = "ViewModel", action = "Delete", id = UrlParameter.Optional }
+            //);
 
-            routes.MapRoute(
-                name: "ViewModel",
-                url: "ViewModel/{id}",
-                defaults: new { controller = "ViewModel", action = "Index", id = UrlParameter.Optional }
-            );
+            //routes.MapRoute(
+            //    name: "ViewModel",
+            //    url: "ViewModel/{id}",
+            //    defaults: new { controller = "ViewModel", action = "Index", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                 name: "GuessingGame",
@@ -46,7 +46,7 @@ namespace FormsAndInputs
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "CheckTemp", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

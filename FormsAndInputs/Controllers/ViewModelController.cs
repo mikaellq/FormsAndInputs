@@ -9,7 +9,7 @@ namespace FormsAndInputs.Controllers
 {
     public class ViewModelController : Controller
     {
-        public static List<Person> personList;
+        static List<Person> personList;
 
         // GET: ViewModel
         public ActionResult Index()
@@ -45,7 +45,8 @@ namespace FormsAndInputs.Controllers
         {
             int n = Int32.Parse(id);
             int index = personList.FindIndex(s => s.Idx.Equals(n));
-            personList.RemoveAt(index);
+            if (index >= 0 && index < personList.Count)
+                personList.RemoveAt(index);
 
             return View(personList);
         }
@@ -58,6 +59,30 @@ namespace FormsAndInputs.Controllers
             personList.Add(p);
 
             return View(personList);
+        }
+
+        [HttpPost]
+        public ActionResult Sort(string name)
+        {
+            if (name == "by Index")
+            {
+                return View("Index", personList.OrderBy(o => o.Idx).ToList());
+            }
+            else if (name == "by Name")
+            {
+                return View("Index", personList.OrderBy(o => o.Name).ToList());
+            }
+            else if (name == "by Phonenr")
+            {
+                return View("Index", personList.OrderBy(o => o.Phonenr).ToList());
+            }
+            else if (name == "by City")
+            {
+                return View("Index", personList.OrderBy(o => o.City).ToList());
+            }
+
+            return View("Index");
+
         }
     }
 }
